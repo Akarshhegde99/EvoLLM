@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --radius: 0.75rem;
+  }
+}
+
+body {
+  @apply bg-background text-foreground antialiased font-sans;
+  background-image:
+    radial-gradient(at 0% 0%, hsla(263, 70%, 50%, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(217, 32%, 17%, 0.15) 0px, transparent 50%);
+}
+
+.font-heading {
+  font-family: 'Outfit', sans-serif;
+}
+
+.glass-panel {
+  @apply bg-secondary/50 backdrop-blur-md border border-border;
+}
+
+.message-user {
+  @apply bg-primary text-primary-foreground rounded-2xl rounded-tr-none px-4 py-3;
+}
+
+.message-assistant {
+  @apply bg-accent text-accent-foreground rounded-2xl rounded-tl-none px-4 py-3;
+}
+
+/* Fix for markdown spacing in messages */
+.prose {
+  @apply text-inherit;
+}
+
+.prose p {
+  @apply my-1 leading-relaxed;
+}
+
+.prose ul,
+.prose ol {
+  @apply my-2 ml-4 list-disc;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+}
+
+/* Code block highlighting tweaks */
+pre code {
+  @apply text-[13.5px] font-mono leading-relaxed;
+}
+
+/* Animations */
+@keyframes spark {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
